@@ -14,7 +14,6 @@ def add_drink(current_user_token):
     name = request.json['name']
     drink_type = request.json['drink_type']
     credit = request.json['credit']
-    photo = request.json['photo']
     desc = request.json['desc']
     directions = request.json['directions']
     ingredients = request.json['ingredients']
@@ -22,7 +21,7 @@ def add_drink(current_user_token):
 
     print(f'TEST: {current_user_token}')
 
-    drink = Coffee(name, drink_type, credit, photo, desc, directions, ingredients, user_token = user_token)
+    drink = Coffee(name, drink_type, credit, desc, directions, ingredients, user_token = user_token)
 
     db.session.add(drink)
     db.session.commit()
@@ -56,8 +55,6 @@ def update_drink(current_user_token, id):
         drink.drink_type = request.json['drink_type']
     if 'credit' in request.json:
         drink.credit = request.json['credit']
-    if 'photo' in request.json:
-        drink.photo = request.json['photo']
     if 'desc' in request.json:
         drink.desc = request.json['desc']
     if 'directions' in request.json:

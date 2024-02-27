@@ -52,19 +52,17 @@ class Coffee(db.Model):
     id = db.Column(db.String, primary_key = True)
     name = db.Column(db.String(75), nullable = False)
     drink_type = db.Column(db.String(100))
-    credit = db.Column(db.String(75), nullable = True)
-    photo = db.Column(db.String(200))
+    credit = db.Column(db.String(75))
     desc = db.Column(db.String(200))
     directions = db.Column(db.String(250))
     ingredients = db.Column(db.String(250))
     user_token = db.Column(db.String, db.ForeignKey('user.token'), nullable = False)
 
-    def __init__(self, name, drink_type, credit, photo, desc, directions, ingredients, user_token, id = ''):
+    def __init__(self, name, drink_type, credit, desc, directions, ingredients, user_token, id = ''):
         self.id = self.set_id()
         self.name = name
         self.drink_type = drink_type
         self.credit = credit
-        self.photo = photo
         self.desc = desc
         self.directions = directions
         self.ingredients = ingredients
@@ -78,7 +76,7 @@ class Coffee(db.Model):
     
 class CoffeeSchema(ma.Schema):
     class Meta:
-        fields = ['id', 'name', 'drink_type', 'credit', 'photo', 'desc', 'directions', 'ingredients']
+        fields = ['id', 'name', 'drink_type', 'credit', 'desc', 'directions', 'ingredients']
 
 coffee_schema = CoffeeSchema()
 coffees_schema = CoffeeSchema(many=True)
