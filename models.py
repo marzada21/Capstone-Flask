@@ -52,7 +52,7 @@ class Coffee(db.Model):
     id = db.Column(db.String, primary_key = True)
     name = db.Column(db.String(75), nullable = False)
     drink_type = db.Column(db.String(100))
-    credit = db.Column(db.String(75))
+    credit = db.Column(db.String(75), nullable = True)
     photo = db.Column(db.String(200))
     desc = db.Column(db.String(200))
     directions = db.Column(db.String(250))
